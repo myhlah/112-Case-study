@@ -1,0 +1,485 @@
+.app-container {
+	font-family: Arial, sans-serif;
+	background: linear-gradient(to bottom, #ffffff, #d8f3dc);
+	color: #333;  }
+  
+  .header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 3px 2rem;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	width: 96%;
+  }
+
+  .about-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 3px 2rem;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	position: fixed;
+	width: 96%;
+}
+
+  .title{
+	text-align: left;
+	margin-left: 5%;
+	color: #05223e;
+	position: absolute;
+
+  }
+  
+  .logo img {
+	height: 50px;
+	width: 50px;
+  }
+  
+  .nav a {
+	margin: 0 1rem;
+	text-decoration: none;
+	color: #05223e;
+	font-weight: bold;
+	
+  }
+  .nav a:hover, .nav a:active {
+	text-decoration: none;
+	color: #ffffff;
+	font-weight: bold;
+	background-color: #05223e;
+	padding: 24px 5px;
+  }
+  .main-section {
+	padding: 2rem;
+  }
+  
+ 
+  .banner{
+	width: 104%;
+  	height:480px;
+	margin: 0px 0px 1rem -31px;
+	
+  }
+  
+  .cards-container {
+	display: flex;                /* Display the cards in a row */
+	justify-content: space-between; /* Space the cards evenly */
+	gap: 20px;                     /* Space between cards */
+	margin-top: 20px;    
+	margin-bottom: 20px;
+  }
+  
+  .card {
+	background-color: #fff;       /* White background for each card */
+	border-radius: 10px;           /* Rounded corners */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Slight shadow */
+	padding:  5px 10px 10px 30px;                 /* Padding inside the card */
+	flex: 1;                       /* Allow the cards to grow equally */
+	text-align: left;            /* Center the content */
+	min-width: 200px;              /* Ensure each card has a minimum width */
+	transition: transform 0.3s;    /* Smooth hover effect */
+	position: relative;  
+  }
+  .card::before {
+	content: '';                    /* Empty content for the colored side */
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 20px;                    /* Width of the colored side */
+	background-color: #05223e;      /* Example color, change as needed */
+	border-radius: 10px 0 0 10px;    /* Rounded corners for the side */
+  }
+  .card:hover {
+	transform: translateY(-5px);  /* Lift the card on hover */
+  }
+  
+  .card h3 {
+	font-size: 1.2rem;             /* Size of the card title */
+	margin-bottom: 5px;           /* Space below the title */
+  }
+  
+  .card p {
+	font-size: 1rem;  
+	margin-top: 30px;           /* Size of the card content */
+	color: #333;                  /* Dark text color */
+  }
+  
+
+  .bottom-section {
+	display: flex;
+	flex: 1;
+    gap: 1rem;
+    position: relative;
+    flex-direction: row;
+    margin-bottom: -40px
+  }
+
+  .medium {
+	flex: 1;
+	height: 250px;
+	padding: 2rem;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .bottom-section1 {
+	display: flex;
+	flex: 1;
+    gap: 1rem;
+    position: relative;
+    flex-direction: row;
+    margin-bottom: -30px;
+	height:350px;
+  }
+
+  .medium1 {
+	flex: 1;
+	height: 450px;
+	padding: 0 1rem 1rem 0rem;
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .medium1 h2 {
+	margin-top: -30px;
+  }
+  
+  
+  .bottom-section .small {
+	flex: 0.5;
+	height: 150px;
+	background: #ccc;
+  }
+  
+  .records-section {
+	padding: 2rem;
+	background: #fff;
+	border-radius: 8px;
+	margin: 8.5rem 2rem ;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .records-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+
+  }
+  .recorh2 {
+    width: 120%;
+
+  }
+  .search-bar {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+  }
+  
+  .search-bar input {
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+  }
+  
+  .search-bar button {
+	background: #28a745;
+	color: #fff;
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+  
+  .records-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 12px;
+	text-align: center;
+  }
+  
+  .records-table th, .records-table td {
+	padding: 0.75rem;
+	border: 1px solid #ddd;
+
+  }
+  .records-table td {
+	text-align: left;
+  }
+
+  
+  .records-table th {
+	background: #f8f9fa;
+	text-align: center;
+  }
+  /*add*/
+  .adddata{
+	background-color: #05223e;
+    color: white;
+    padding: 14px 10px;
+    border: none;
+	width:250px;
+    cursor: pointer;
+	border-radius: 5px;
+	margin-top: 50px;
+	margin-bottom: -15px;
+  }
+
+  .adddata1{
+	background-color: #e9fb1e;
+    color: #05223e;
+	font-weight: bolder;
+    padding: 14px 10px;
+    border: none;
+	width:120px;
+    cursor: pointer;
+	border-radius: 5px;
+	margin-top: 50px;
+	margin-right: 5px;
+	margin-bottom: -15px;
+  }
+  
+  .search{
+	margin-left: 0px; 
+	margin-top: 0px;
+	margin-bottom: -35px;
+	width: 81.7%;
+	
+}
+.search-bar input {
+	padding: 0.8rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+  }
+
+  .records-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 12px;
+	text-align: center;
+  }
+  
+  .records-table th, .records-table td {
+	padding: 0.75rem;
+	border: 1px solid #ddd;
+	
+  }
+  .records-table td {
+	text-align: left;
+  }
+
+  
+  .records-table th {
+	background: #f8f9fa;
+	text-align: center;
+
+  }
+
+  /* Modal Styles */
+.modal-content {
+	position: fixed;
+	top: 55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #fff;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	max-width: 500px; /* Increase width */
+	max-height: 80vh;
+	overflow-y: auto;
+	z-index: 1000;
+  }
+  
+  /* Form Layout */
+  .add-form {
+    margin-left: 20px;
+	text-align: left;
+  }
+  
+  .add-form label {
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 5px;
+	color: #555;
+	width: 100%; /* Ensures labels take full width */
+  }
+  
+  .add-form input,
+  .add-form select,
+  .add-form textarea {
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	font-size: 12px;
+	width: 90%; /* Ensure inputs also take full width */
+  }
+  .add-form select, .add-form select:focus{
+	width: 95%;
+  }
+  
+  .add-form input:focus,
+  .add-form select:focus,
+  .add-form textarea:focus {
+	border-color: #4a90e2;
+	outline: none;
+  }
+  
+  .add-form textarea {
+	resize: vertical;
+	height: auto;
+  }
+  
+  .modal-buttons {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 12px;
+
+  }
+  
+  .submitadd {
+	padding: 5px 5px;
+	background-color: #4CAF50;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 80px;
+	margin-left: 120px;
+  }
+  
+  .submitadd:hover {
+	background-color: #45a049;
+  }
+  
+  .close-modal-btn {
+	padding: 5px 5px;
+	background-color: #f44336;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 80px;
+	margin-left: 50px;
+  }
+  
+  .close-modal-btn:hover {
+	background-color: #d32f2f;
+  }
+  
+  
+  /* Optional: Overlay styles */
+  .ReactModal__Overlay {
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+  }
+  .buttons{
+	width: 148px;
+	align-items: center;
+
+  }
+
+  .delete-button {
+    background-color: rgb(255, 96, 96);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+	margin-left: 2px;
+  }
+  
+  .delete-button:hover {
+    background-color: rgb(255, 96, 96);
+  }
+
+  .edit-button {
+    background-color: rgb(5, 140, 230);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .edit-button:hover {
+    background-color: rgb(5, 140, 230);
+  }
+  
+
+  .pagination {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    
+  }
+  
+  .pagination button {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    background-color: #b5b5b5;
+    color: white;
+  }
+  
+  .pagination button.active {
+    background-color: #007bff;
+    color: white;
+    border: none;
+  }
+
+  .pagination button:disabled {
+	cursor: not-allowed;
+	opacity: 0.5;
+  }
+
+/*map*/
+/* src/components/MapPage.css */
+.map-page {
+	display: flex;
+	height: 90vh;
+	margin-top: 44px;
+  }
+  
+  .map-description {
+	width: 300px;
+	padding: 20px;
+	background-color: #fff;
+	border-right: 1px solid #ddd;
+	overflow-y: auto;
+  }
+  
+  .map-container {
+	flex-grow: 1;
+	height: 100%;
+  }
+  
+  .map-description h2 {
+	margin-top: 0;
+  }
+  

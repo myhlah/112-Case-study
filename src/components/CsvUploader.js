@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import Papa from 'papaparse';  // Import PapaParse
 import { db } from './firebase'; // Import Firebase configuration
 import { collection, addDoc } from 'firebase/firestore';
-import './DataList.css'; // Import the CSS file
 import './CsvUploader.css'; // Import CSS for styling
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpload } from '@fortawesome/free-solid-svg-icons';
 
-function CsvUploader() {
+function CsvUploader({ onCsvUpload }) { // Accept callback as prop
   const [csvFile, setCsvFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -17,47 +19,53 @@ function CsvUploader() {
       return;
     }
 
-    const reader = new FileReader();
-    reader.onload = async (e) => {
-      const text = e.target.result;
-      const rows = text.split('\n');
-      const data = [];
-
-      // Parse CSV rows assuming columns: location, cases, deaths, date, regions
-      rows.forEach((row, index) => {
-        const columns = row.split(',');
-        if (columns.length >= 5 && index > 0) { // Skip header row
-          data.push({
-            location: columns[0].trim(),
-            cases: Number(columns[1].trim()),
-            deaths: Number(columns[2].trim()),
-            date: columns[3].trim(),
-            regions: columns[4].trim(),
-          });
-        }
-      });
-
-      try {
-        const batch = data.map(async (item) => {
-          await addDoc(collection(db, 'dengueData'), item);
+    // Using PapaParse to parse the CSV file
+    Papa.parse(csvFile, {
+      complete: async (result) => {
+        const data = result.data;
+        
+        // Map the CSV data to the correct fields
+        const parsedData = data.slice(1).map((row) => { // Skip the header row
+          return {
+            ticketNumber: row[0].trim(),
+            dateOfApprehension: row[1].trim(),
+            timeOfApprehension: row[2].trim(),
+            nameOfDriver: row[3].trim(),
+            gender: row[4].trim(),
+            age: row[5].trim(),
+            vehicleClassification:row[6].trim(),
+            placeOfViolation: row[7].trim(),  // Ensure this is not split
+            violationType: row[8].trim(),
+            fineStatus: row[9].trim(),
+            apprehendingOfficer: row[10].trim(),
+          };
         });
 
-        await Promise.all(batch);
-        alert('CSV data uploaded successfully!');
-      } catch (error) {
-        console.error('Error uploading CSV data:', error);
-      }
-    };
+        try {
+          // Upload the data to Firestore
+          const batch = parsedData.map(async (item) => {
+            await addDoc(collection(db, 'records'), item); // Upload each item to Firestore
+          });
 
-    reader.readAsText(csvFile);
+          await Promise.all(batch);
+          alert('CSV data uploaded successfully!');
+
+          // Pass the parsed data back to LandingPage via onCsvUpload prop
+          onCsvUpload(parsedData);
+        } catch (error) {
+          console.error('Error uploading CSV data:', error);
+        }
+      },
+      header: false,  // We are manually handling the header row
+      skipEmptyLines: true,  // Skip empty lines
+    });
   };
 
   return (
     <div className="csv-uploader">
       <input type="file" accept=".csv" onChange={handleFileChange} className="file-input" />
-      <button className="upload-csv-button" onClick={handleFileUpload}>Upload CSV</button>
+      <button className="upload-csv-button" onClick={handleFileUpload}> <FontAwesomeIcon icon={faUpload} style={{color: "#ffffff", marginRight:"10"}}/>Upload CSV</button>
     </div>
-
   );
 }
 

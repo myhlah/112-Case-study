@@ -1,45 +1,40 @@
 import React, { useState } from 'react';
-import Add from './components/Add';
-import DataList from './components/DataList';
-import CsvUploader from './components/CsvUploader'; 
-import './App.css'; 
-import iciticket from './iciTicket-removebg-preview1.png';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import About from './components/about';
+import LandingPage from './components/LandingPage';
+import Map from './components/map';
+import Header from './components/Header';
+import  CsvUploader from './components/CsvUploader'; // Import csv.js
 
 function App() {
-  const [view, setView] = useState('list','add');  // To toggle between views
+  const [csvData, setCsvData] = useState([]);
+
+  // Callback function to update CSV data
+  const handleCSVUpload = (result) => {
+    setCsvData(result.data); // Assuming you want to store the parsed data
+  };
 
   return (
-    <div className="app-container">
-      <div className="sidebar">
-        <img src={iciticket} alt="Logo" className="logo-img" />
-        <h4>Data Management</h4>
-        <ul>
-          {/*<li onClick={() => setView('dash')}>Dashboard</li>*/}
-          <li onClick={() => setView('list')}>Data List</li>
-          <li onClick={() => setView('add')}>Add Data</li>
-        </ul>
-      </div>
-
-      <div className="main-content">
-        <h2 className="centered-title">Citiation Ticket Data Management</h2>
+    <Router>
+      <div className="App">
+        {/* Use the Header component here */}
+        <Header />
         
-        {view === 'add' && (
-          <>
-            <CsvUploader />
-            <Add />
-          </>
-        )}
+        {/* CSV File Upload */}
+        <input
+          type="file"
+          accept=".csv"
+          onChange={(e) => CsvUploader(e, handleCSVUpload)}
+        />
 
-        {view === 'list' && 
-        (
-          <>
-            <CsvUploader />
-            <DataList />
-          </>
-         
-        )}
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/LandingPage" element={<LandingPage />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
       </div>
-    </div>
+    </Router>
   );
 }
 
